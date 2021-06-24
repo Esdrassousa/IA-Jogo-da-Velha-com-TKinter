@@ -1,12 +1,15 @@
 
+
 def movimentoIa(self,vetor_de_Vitoria1,jogador_estado):
+    
+    
     
     lance = posicoesBranco(vetor_de_Vitoria1)
     melhor_valor = None
     melhor_movimento = None
     for lance_joga in lance:
         
-        # jogador_estado = 1
+        
         vetor_de_Vitoria1[lance_joga[0]][lance_joga[1]] = jogador_estado
         
         self.valor = minimax(vetor_de_Vitoria1, jogador_estado)
@@ -27,12 +30,13 @@ def movimentoIa(self,vetor_de_Vitoria1,jogador_estado):
                 melhor_movimento = lance_joga
 
     
-    
-    a = melhor_movimento[0]
-    b= melhor_movimento[1]
-    return a,b
-    
-    # print(lance)
+    if melhor_movimento!=None:
+        a = melhor_movimento[0]
+        b= melhor_movimento[1]
+        return a,b
+    else:
+        return None,None
+   
 def posicoesBranco(vetor_de_Vitoria1):
     
     Posi = []
@@ -44,7 +48,7 @@ def posicoesBranco(vetor_de_Vitoria1):
             if vetor_de_Vitoria1[i][j] == "":
                 
                 Posi.append([i,j])
-                print(Posi)
+                
         
         
     return Posi 
@@ -53,25 +57,24 @@ def minimax(vetor_de_Vitoria1, jogador_estado):
     verifica_vitoria = VerificaVitoria(vetor_de_Vitoria1)
     
     if verifica_vitoria == 'empate':
-            print('aqui deu impate')
+            print('empate')
             pontuacao = 1
             return pontuacao
             
     elif verifica_vitoria == 'vitoria_0':
-            print('aqui deu 0')
+            print('0 Vence')
             pontuacao = 2
             return pontuacao
             
     elif verifica_vitoria == 'vitoria_X':
-            print('aqui deu X')
+            print('X vence')
             pontuacao = 0
             return pontuacao 
     
     
    
    
-    # jogador_estado = jogador(jogador_estado)
-    # 
+
     
     lance = posicoesBranco(vetor_de_Vitoria1)
     melhor_valor = None
@@ -112,7 +115,7 @@ def jogador(jogador_estado):
 def VerificaVitoria(vetor_de_Vitoria1):
         vetor_situacao =None
         Posicao = []
-        print('o vetor de0 vitoria é ' ,vetor_de_Vitoria1)
+        print('o vetor de vitoria é ' ,vetor_de_Vitoria1)
         for i in range(3):
         
             for j in range(3):
