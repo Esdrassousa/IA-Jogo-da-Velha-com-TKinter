@@ -2,8 +2,6 @@ from tkinter import *
 import tkinter as tk
 import  IA
 import random  
-import time
-import _thread
 import threading
 jogador_estado = 0
 
@@ -25,7 +23,7 @@ vetor_de_Vitoria = [
 
 cor_botao = '#%02x%02x%02x' % (64, 204, 208)
 
-class janelas(threading.Thread):        
+class Jogo(threading.Thread):        
         
     def __init__(self):
         threading.Thread.__init__(self)
@@ -488,6 +486,6 @@ class janelas(threading.Thread):
         self.VerificaVitori() 
         
     
-janelas()
+Jogo()
 
 
